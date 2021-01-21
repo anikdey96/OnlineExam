@@ -1,0 +1,63 @@
+﻿@model IEnumerable<OnlineExam.Models.OnlineExamClass>
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<h2>Creating Simple Online Exam Project</h2>
+<h3>Web API MVC Tutorials</h3>
+<hr />
+
+@foreach (var item in Model)
+{
+    <table class="table">
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Qid)
+            @Html.DisplayFor(modelItem => item.Question)</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" id="Option1" name="@item.Qid" class="radio" value="@item.option1" />@item.option1 <br />
+                <input type="radio" id="Option2" name="@item.Qid" class="radio" value="@item.option2" />@item.option2 <br />
+                <input type="radio" id="Option3" name="@item.Qid" class="radio" value="@item.option3" />@item.option3 <br />
+                <input type="radio" id="Option4" name="@item.Qid" class="radio" value="@item.option4" />@item.option4 <br />
+                <label id="lab1" name="@item.Qid" class="radio" style="display:none; color:forestgreen ">Correct Answer: @item.Corrections</label>
+            </td>
+        </tr>
+
+    </table>
+}
+
+<button type="button" id="but1" onclick="displayResults();">Submit</button>
+
+<hr />
+<label id="labresult"></label>
+
+<script>
+    $(document).ready(function()
+    {
+            $("#but1").click(function () {
+
+                $(".radio").show();
+                $(".radio").attr("disabled", true);
+
+            });
+
+        });
+    function displayResults()
+    {
+        document.getElementById("labresult").innerText = "";
+
+        var e = document.getElementsByTagName('input');
+        for (i = 0; i < e.length; i++)
+        {
+            if (e[i].type=="radio") {
+
+                if (e[i].checked) {
+                    document.getElementById("labresult").innerHTML += "Q--" + e[i].name + ")" + "You Selected Answer Is:" + e[i].value + "<br/>";
+                }
+            }
+        }
+
+    }
+
+</script>

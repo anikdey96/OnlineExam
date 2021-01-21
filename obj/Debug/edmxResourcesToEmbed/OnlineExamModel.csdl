@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="onlineexam">
+    <Key>
+      <PropertyRef Name="Qid" />
+    </Key>
+    <Property Name="Qid" Type="Int32" Nullable="false" />
+    <Property Name="Question" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="option4" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Corrections" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="StudentManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="onlineexams" EntityType="Self.onlineexam" />
+  </EntityContainer>
+</Schema>
